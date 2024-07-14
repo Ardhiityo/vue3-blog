@@ -1,27 +1,27 @@
 <template>
   <div>
-    <h1 ref="heading">{{ say }} {{ num }}</h1>
-    <input type="text" v-model="say" />
-    <button @click="getEl">Click!</button>
-    <button @click="num++">Incre!</button>
+    <h1>Hello {{ personOne }}</h1>
+    <button @click="changeOne">Change</button>
+    <h1>Hello {{ personTwo }}</h1>
+    <button @click="changeTwo">Change</button>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 
-const heading = ref(null);
-// console.log(heading.value);
+const personOne = ref("Andi");
 
-const say = ref("Hello World");
-const num = ref("123");
+function changeOne() {
+  personOne.value = "Budi";
+}
 
-const getEl = () => {
-  // console.log(heading.value.classList.add("Heading"));
-  console.log(heading.value);
-  heading.value.innerText = "Hello Bro";
-  console.log(heading.value);
-};
+// Reactive hanya akan bekerja pada data object / array
+const personTwo = reactive("Putri");
+
+function changeTwo() {
+  personTwo = "Dwi";
+}
 </script>
 
 <style scoped>
