@@ -1,27 +1,28 @@
 <template>
   <div>
-    <h1>Hello {{ personOne }}</h1>
-    <button @click="changeOne">Change</button>
-    <h1>Hello {{ personTwo }}</h1>
-    <button @click="changeTwo">Change</button>
+    <input type="text" v-model="search" /> <br />
+    <div v-for="(name, index) in searchPerson" :key="index">
+      {{ name }}
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, computed } from "vue";
+const search = ref("");
+const person = ref([
+  "andrew",
+  "john",
+  "jane",
+  "jessica",
+  "james",
+  "jack",
+  "jennifer",
+]);
 
-const personOne = ref("Andi");
-
-function changeOne() {
-  personOne.value = "Budi";
-}
-
-// Reactive hanya akan bekerja pada data object / array
-const personTwo = reactive("Putri");
-
-function changeTwo() {
-  personTwo = "Dwi";
-}
+const searchPerson = computed(() => {
+  return person.value.filter((name) => name.includes(search.value));
+});
 </script>
 
 <style scoped>
