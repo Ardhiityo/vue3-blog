@@ -6,8 +6,12 @@
 
 <script setup>
 import PostSingle from "../components/PostSingle.vue";
-import { defineProps } from "vue";
+import { defineProps, onMounted, onUpdated, onUnmounted } from "vue";
 const { posts } = defineProps(["posts"]);
+
+// onMounted(() => console.log("Mounted"));
+// onUnmounted(() => console.log("Unmounted"));
+// onUpdated(() => console.log("Update"));
 </script>
 
 <style scoped>
