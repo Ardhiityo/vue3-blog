@@ -2,15 +2,13 @@
   <div>
     <h1>Homepage</h1>
     <div v-if="err">{{ err }}</div>
-    <div v-else v-for="post in posts" :key="post.id">
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.body }}</p>
-    </div>
+    <PostList :posts="posts" />
   </div>
 </template>
 
 <script setup>
 import getPosts from "@/composable/getPosts";
+import PostList from "../components/PostList.vue";
 const { posts, err, load } = getPosts();
 load();
 </script>
