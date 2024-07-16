@@ -1,35 +1,32 @@
 <template>
   <div>
-    <h1>Home</h1>
-    <PostList v-if="showArticle" :posts="article" />
-    <button @click="showArticle = !showArticle">Show Article</button>
-    <button @click="article.pop()">Delete</button>
+    <h1>Homepage</h1>
+    <div v-if="err">{{ err }}</div>
+    <div v-else v-for="post in posts" :key="post.id">
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.body }}</p>
+    </div>
   </div>
 </template>
 
 <script setup>
-import PostList from "../components/PostList.vue";
-import { ref, onMounted, onUnmounted, onUpdated } from "vue";
-const showArticle = ref(true);
+import { ref } from "vue";
+const posts = ref([]);
+const err = ref(null);
 
-const article = ref([
-  {
-    title: "Article 1",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero enim rerum explicabo, nostrum maiores ab voluptatem sit soluta quasi! Dolorem maiores voluptate repellat cupiditate consequuntur provident obcaecati esse, facilis ipsa?",
-  },
-  {
-    title: "Article 2",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero enim rerum explicabo, nostrum maiores ab voluptatem sit soluta quasi! Dolorem maiores voluptate repellat cupiditate consequuntur provident obcaecati esse, facilis ipsa?",
-  },
-  {
-    title: "Article 3",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero enim rerum explicabo, nostrum maiores ab voluptatem sit soluta quasi! Dolorem maiores voluptate repellat cupiditate consequuntur provident obcaecati esse, facilis ipsa?",
-  },
-]);
-// onMounted(() => console.log("Mounted"));
-// onUnmounted(() => console.log("Unmounted"));
-// onUpdated(() => console.log("Update"));
+const load = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/posts");
+    if (response.ok) {
+      const data = await response.json();
+      posts.value = data;
+    } else {
+      throw Error("Data gagal dimuat");
+    }
+  } catch (error) {
+    err.value = error.message;
+  }
+};
+
+load();
 </script>
