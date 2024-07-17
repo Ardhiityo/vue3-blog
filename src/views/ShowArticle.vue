@@ -11,6 +11,9 @@
       <div v-else>
         <h2>{{ post.title }}</h2>
         <p>{{ post.body }}</p>
+        <div v-for="tag in post.tags" :key="tag">
+          <p>{{ tag }}</p>
+        </div>
       </div>
     </div>
   </div>

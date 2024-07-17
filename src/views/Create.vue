@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form action="" method="post">
+    <form @submit.prevent="createPost(title, body, tag)">
       <label for="title">Title</label>
       <br />
       <input type="text" id="title" v-model="title" />
@@ -17,7 +17,7 @@
         type="text"
         id="tag"
         v-model="tag"
-        @keydown.enter.prevent="addTag"
+        @keydown.enter.prevent="status()"
       />
       <br />
 
@@ -32,16 +32,15 @@
 
 <script setup>
 import { ref } from "vue";
+import post from "../composable/post.js";
+const { createPost, addTag, tags } = post();
 const title = ref("");
 const body = ref("");
 const tag = ref("");
-const tags = ref([]);
 
-function addTag() {
-  tag.value = "#" + tag.value.toLowerCase().replace(/\s+/g, "");
-  if (!tags.value.includes(tag.value)) {
-    tags.value.push(tag.value);
-  }
-  tag.value = "";
+function status () {
+    addTag(tag.value);
+    tag.value = "";
 }
+
 </script>
