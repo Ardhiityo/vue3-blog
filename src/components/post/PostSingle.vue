@@ -7,11 +7,9 @@
       <h3 class="post-subtitle">{{ post.body }}</h3>
     </RouterLink>
 
-    <div class="d-flex flex-wrap gap-2">
-      <p class="post-meta" v-for="tag in post.tags" :key="tag">
+      <span class="post-meta mx-1" v-for="tag in post.tags" :key="tag">
         {{ tag }}
-      </p>
-    </div>
+      </span>
   </div>
   <hr class="my-4" />
 </template>

@@ -20,7 +20,7 @@
             <RouterLink class="nav-link px-lg-3 py-3 py-lg-4" :to="{name : 'home'}">Home</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link px-lg-3 py-3 py-lg-4" to="/">About</RouterLink>
+            <RouterLink class="nav-link px-lg-3 py-3 py-lg-4" to="/article/create">Create Post</RouterLink>
           </li>
           <li class="nav-item">
             <a
