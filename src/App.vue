@@ -1,11 +1,6 @@
 <template>
   <div>
-    <RouterView />
+    <RouterView :image="'img/home-bg.jpg'" />
   </div>
 </template>
 
-<script setup>
-</script>
-
-<style scoped>
-</style>

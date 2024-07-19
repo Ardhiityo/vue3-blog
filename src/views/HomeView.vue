@@ -1,13 +1,7 @@
 <template>
-  <div class="container text-center">
-    <h1>Homepage</h1>
-    <p ref="para">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio sed
-      dolores nostrum laudantium enim beatae nam quidem corporis veniam, saepe
-      officia laboriosam quis porro numquam velit, voluptates eveniet! Fugit,
-      magnam.
-    </p>
-
+  <div>
+    <Navbar />
+    <PageHeader :image="image" />
     <div v-if="loading">
       <Loading />
     </div>
@@ -16,19 +10,21 @@
       <div v-if="err">{{ err }}</div>
       <PostList :posts="posts" />
     </div>
+    <FooterVue />
   </div>
 </template>
 
 <script setup>
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { onMounted, ref } from "vue";
+import { onMounted, defineProps } from "vue";
+const { image } = defineProps(["image"]);
 import Loading from "@/components/Loading.vue";
 import getPosts from "@/composable/getPosts";
-import PostList from "../components/PostList.vue";
+import PostList from "../components/post/PostList.vue";
+import Navbar from "@/components/Navbar.vue";
+import PageHeader from "@/components/PageHeader.vue";
+import FooterVue from "@/components/FooterVue.vue";
 const { posts, err, load, loading } = getPosts();
-const para = ref(null);
 onMounted(() => {
-  console.log(para.value.innerText);
   load();
 });
 </script>

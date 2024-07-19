@@ -1,9 +1,13 @@
 <template>
-  <div></div>
+  <div class="container my-5">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="spin"></div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-div {
+.spin {
   width: 50px;
   height: 50px;
   border: 2px solid transparent;
