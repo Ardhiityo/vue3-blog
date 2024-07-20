@@ -24,10 +24,11 @@ const getPosts = () => {
         }
     };
 
+    load();
+    
     return {
         posts,
         err,
-        load,
         loading
     }
 }

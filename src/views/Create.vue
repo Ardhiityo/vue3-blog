@@ -1,7 +1,17 @@
 <template>
   <div>
-    <Navbar />
-    <PageHeader />
+
+    <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="site-heading">
+              <h1>Create a New Post</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
     <main class="mb-4">
       <div class="container px-4 px-lg-5">
@@ -55,8 +65,6 @@
         </div>
       </div>
     </main>
-
-    <FooterVue />
   </div>
 </template>
 
@@ -64,9 +72,6 @@
 import { ref } from "vue";
 import post from "../composable/post.js";
 const { createPost, addTag, tags } = post();
-import Navbar from "@/components/Navbar.vue";
-import PageHeader from "@/components/PageHeader.vue";
-import FooterVue from "@/components/FooterVue.vue";
 const title = ref("");
 const body = ref("");
 const tag = ref("");

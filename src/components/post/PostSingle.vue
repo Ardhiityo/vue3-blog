@@ -8,7 +8,9 @@
     </RouterLink>
 
       <span class="post-meta mx-1" v-for="tag in post.tags" :key="tag">
-        {{ tag }}
+        <RouterLink :to="{name: 'tag', params: { tag }}">
+          {{ tag }}
+        </RouterLink>
       </span>
   </div>
   <hr class="my-4" />

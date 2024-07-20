@@ -24,10 +24,11 @@ const getPost = (id) => {
         }
     };
 
+    load();
+    
     return {
         post,
         err,
-        load,
         loading
     }
 }

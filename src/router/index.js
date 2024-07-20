@@ -6,6 +6,7 @@ import {
 import HomeView from '../views/HomeView.vue'
 import ShowArticle from '../views/ShowArticle.vue'
 import Create from '../views/Create.vue';
+import ShowTags from '../views/ShowTags.vue';
 
 const router = createRouter({
   history: createWebHistory(
@@ -24,6 +25,11 @@ const router = createRouter({
       path: '/article/create',
       name: 'create',
       component: Create
+    },
+    {
+      path: '/tag/:tag',
+      name: 'tag',
+      component: ShowTags
     }
   ]
 })

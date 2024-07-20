@@ -5,7 +5,6 @@
         <div v-for="post in posts" :key="post.id">
           <PostSingle :post="post" />
         </div>
-        <Pagination />
       </div>
     </div>
   </div>
@@ -15,5 +14,4 @@
 import { defineProps } from "vue";
 const { posts } = defineProps(["posts"]);
 import PostSingle from "@/components/post/PostSingle.vue";
-import Pagination from "../Pagination.vue";
 </script>

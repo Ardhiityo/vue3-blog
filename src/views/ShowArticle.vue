@@ -1,8 +1,19 @@
 <template>
   <div>
-    <Navbar />
-    <PageHeader :image="image" />
-    <div class="row gx-4 gx-lg-5 justify-content-center">
+
+    <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+      <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="site-heading">
+              <h1>{{ post.title }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div v-if="loading">
           <Loading />
@@ -12,7 +23,6 @@
             {{ err }}
           </div>
           <div v-else>
-            <h2>{{ post.title }}</h2>
             <p>{{ post.body }}</p>
 
             <div class="d-flex flex-wrap gap-2">
@@ -23,21 +33,16 @@
           </div>
         </div>
       </div>
-    </div>
-    <FooterVue />
+    </main>
   </div>
 </template>
 
 <script setup>
 import Loading from "@/components/Loading.vue";
 import getPost from "@/composable/getPost";
-import Navbar from "@/components/Navbar.vue";
-import PageHeader from "@/components/PageHeader.vue";
-import FooterVue from "@/components/FooterVue.vue";
 import { onMounted, defineProps } from "vue";
 const { image } = defineProps(["image"]);
 import { useRoute } from "vue-router";
 const route = useRoute();
-const { post, err, load, loading } = getPost(route.params.id);
-onMounted(() => load());
+const { post, err, loading } = getPost(route.params.id);
 </script>

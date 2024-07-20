@@ -1,8 +1,0 @@
-<template>
-  <div class="d-flex justify-content-end mb-4">
-    <a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a>
-  </div>
-</template>
-
-<script setup>
-</script>
