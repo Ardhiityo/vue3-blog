@@ -20,7 +20,7 @@
     <div v-else>
       <div v-if="err">{{ err }}</div>
 
-      <PostList :posts="showTags" />
+      <!-- <PostList :posts="showTags" /> -->
     </div>
   </div>
 </template>
@@ -30,7 +30,8 @@
 import { onMounted, defineProps, computed } from "vue";
 const { image } = defineProps(["image"]);
 import Loading from "@/components/Loading.vue";
-import getPosts from "@/composable/getPosts";
+import {getPosts} from "@/composable/getPosts";
+
 import PostList from "../components/post/PostList.vue";
 const { posts, err, loading } = getPosts();
 

@@ -31,12 +31,14 @@ import '@/assets/js/scripts';
 // Clean Blog
 
 // Pinia
-import { createPinia } from 'pinia'
+import {
+    createPinia
+} from 'pinia'
 const pinia = createPinia()
 // Pinia
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon);
-app.use(pinia);
+app.use(pinia)
 app.use(router)
 app.mount('#app')

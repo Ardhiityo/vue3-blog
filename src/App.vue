@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <RouterView :image="'img/home-bg.jpg'" />
+    <RouterView/>
     <FooterVue />
   </div>
 </template>

@@ -1,36 +1,45 @@
 import {
+    db
+} from '@/firebase/config.js';
+
+import {
+    collection,
+    getDocs
+} from "firebase/firestore";
+
+import {
     ref
 } from "vue";
 
-const getPosts = () => {
+import {
+    defineStore
+} from 'pinia'
 
-    const posts = ref([]);
+export const getPosts = defineStore('posts', () => {
     const err = ref(null);
-    const loading = ref(true);
+    const posts = ref([]);
 
-    const load = async () => {
+    async function load() {
+        const loading = ref(true);
         try {
-            await new Promise(resolve => setTimeout(resolve, 3000));
-            const response = await fetch("http://localhost:3000/posts");
-            if (response.ok) {
-                const data = await response.json();
-                posts.value = data;
-                loading.value = false;
-            } else {
-                throw Error("Data gagal dimuat");
-            }
+            const snapshot = await getDocs(collection(db, "posts"));
+            snapshot.forEach((p) => {
+                return posts.value.push({
+                    id: p.id,
+                    ...p.data(),
+                });
+            });
         } catch (error) {
-            err.value = error.message;
+            return err.value = error.message;
+        } finally {
+            loading.value = false;
+            return loading.value;
         }
-    };
+    }
 
-    load();
-    
     return {
         posts,
         err,
-        loading
+        load
     }
-}
-
-export default getPosts;
+});
