@@ -1,36 +1,41 @@
 import {
+    db
+} from '@/firebase/config.js';
+
+import {
+    doc,
+    getDoc
+} from "firebase/firestore";
+
+import {
+    defineStore
+} from 'pinia'
+
+import {
     ref
-} from "vue";
+} from 'vue';
 
-const getPost = (id) => {
-
-    const post = ref({});
+export const getPost = defineStore('post', () => {
     const err = ref(null);
-    const loading = ref(true);
-
-    const load = async () => {
+    async function getId(id) {
         try {
-            await new Promise(resolve => setTimeout(resolve, 3000));
-            const response = await fetch("http://localhost:3000/posts/" + id);
-            if (response.ok) {
-                const data = await response.json();
-                post.value = data;
-                loading.value = false;
+            // Referensi dokumen berdasarkan ID
+            const docRef = doc(db, 'posts', id);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                return {
+                    id,
+                    ...docSnap.data()
+                }
             } else {
-                throw Error("Data gagal dimuat");
+                throw Error('Dokumen tidak ditemukan');
             }
         } catch (error) {
             err.value = error.message;
         }
-    };
-
-    load();
-    
-    return {
-        post,
-        err,
-        loading
     }
-}
-
-export default getPost;
+    return {
+        err,
+        getId
+    }
+});

@@ -7,6 +7,7 @@ import HomeView from '../views/HomeView.vue'
 import ShowArticle from '../views/ShowArticle.vue'
 import Create from '../views/Create.vue';
 import ShowTags from '../views/ShowTags.vue';
+import PageNotFound from '../views/PageNotFound.vue';
 
 const router = createRouter({
   history: createWebHistory(
@@ -30,7 +31,12 @@ const router = createRouter({
       path: '/tag/:tag',
       name: 'tag',
       component: ShowTags
-    }
+    },
+    {
+      path: '/:pathMatch(.*)',
+      name: 'pageNotFound',
+      component: PageNotFound
+    },
   ]
 })
 
