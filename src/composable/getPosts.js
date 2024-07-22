@@ -29,7 +29,6 @@ export const getPosts = defineStore('posts', () => {
                     ...p.data(),
                 });
             });
-            posts.value.splice(0, posts.value.length - 1);
         } catch (error) {
             return err.value = error.message;
         } finally {
