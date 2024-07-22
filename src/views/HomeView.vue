@@ -18,11 +18,11 @@
     </div>
 
     <div v-else>
-      <div v-if="err">{{ err }}</div>
+      <div v-if="error">{{ error }}</div>
       <div v-else>
-      <PostList :posts="posts" />
+        <PostList :posts="posts" />
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -31,16 +31,19 @@ import { ref } from "vue";
 import Loading from "@/components/Loading.vue";
 import PostList from "../components/post/PostList.vue";
 import { getPosts } from "@/composable/getPosts";
-const { posts, err, load } = getPosts();
 const loading = ref(true);
-function loadingHandler() {
+const { err, load } = getPosts();
+
+const posts = ref([]);
+const error = ref(null);
+
+function getData() {
   load()
-    .then((result) => {
-      loading.value = result;
+    .then((res) => {
+      posts.value = res;
     })
-    .catch((err) => {
-      loading.value = false;
-    });
+    .catch(() => (error.value = "Ups, Data not found" || err))
+    .finally(() => (loading.value = false));
 }
-loadingHandler();
+getData();
 </script>

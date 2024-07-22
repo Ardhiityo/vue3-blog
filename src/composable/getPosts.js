@@ -8,7 +8,8 @@ import {
 } from "firebase/firestore";
 
 import {
-    ref
+    ref,
+    watchEffect
 } from "vue";
 
 import {
@@ -17,29 +18,29 @@ import {
 
 export const getPosts = defineStore('posts', () => {
     const err = ref(null);
-    const posts = ref([]);
 
     async function load() {
-        const loading = ref(true);
         try {
+            const data = ref([]);
             const snapshot = await getDocs(collection(db, "posts"));
             snapshot.forEach((p) => {
-                return posts.value.push({
+                // posts.value.push({
+                //     id: p.id,
+                //     ...p.data(),
+                // });
+                data.value.push({
                     id: p.id,
                     ...p.data(),
                 });
             });
+            return data.value;
         } catch (error) {
             return err.value = error.message;
-        } finally {
-            loading.value = false;
-            return loading.value;
         }
     }
 
     return {
-        posts,
-        err,
-        load
+        load,
+        err
     }
 });

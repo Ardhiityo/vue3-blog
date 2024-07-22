@@ -22,15 +22,25 @@
       </div>
     </header>
 
-    <main class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        <div v-if="!errors">
-          <p>{{ post.body }}</p>
-          <div class="d-flex flex-wrap gap-2">
-            <div v-for="tag in post.tags" :key="tag">
-              <p>#{{ tag }}</p>
+    <main class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="post-preview">
+            <div v-if="!errors">
+              <p class="post-subtitle">{{ post.body }}</p>
+              <div class="d-flex flex-wrap gap-2">
+                <span
+                  class="post-meta mx-1"
+                  v-for="tag in post.tags"
+                  :key="tag"
+                >
+                  <p>#{{ tag }}</p>
+                </span>
+              </div>
             </div>
           </div>
+
+          <hr class="my-4" />
         </div>
       </div>
     </main>

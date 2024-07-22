@@ -6,6 +6,15 @@ import {
     useRouter
 } from "vue-router";
 
+import {
+    db
+} from '@/firebase/config.js';
+
+import {
+    collection,
+    addDoc
+} from "firebase/firestore";
+
 function post() {
 
     const router = useRouter();
@@ -29,14 +38,16 @@ function post() {
             body: body,
             tags: tags.value,
         };
-        await fetch("http://localhost:3000/posts", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(posts),
+
+        try {
+            const docRef = await addDoc(collection(db, "posts"), posts);
+        } catch (e) {
+            alert("Error adding document: ", e)
+        }
+
+        router.push({
+            name: 'home'
         });
-        router.push("/");
     }
 
     return {

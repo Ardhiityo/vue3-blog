@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div class="container px-4 px-lg-5">
-        <RouterLink class="navbar-brand" to="/">Start Bootstrap</RouterLink>
+        <RouterLink class="navbar-brand" :to="{name : 'home'}">Start Bootstrap</RouterLink>
         <button
           class="navbar-toggler"
           type="button"
