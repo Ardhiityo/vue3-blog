@@ -24,7 +24,7 @@ function post() {
 
     function addTag(tagFromVue) {
         tag.value = tagFromVue;
-        tag.value = "#" + tag.value.toLowerCase().replace(/\s+/g, "");
+        tag.value = tag.value.toLowerCase().replace(/\s+/g, "");
         if (!tags.value.includes(tag.value)) {
             tags.value.push(tag.value);
         }
@@ -40,7 +40,7 @@ function post() {
         };
 
         try {
-            const docRef = await addDoc(collection(db, "posts"), posts);
+            await addDoc(collection(db, "posts"), posts);
         } catch (e) {
             alert("Error adding document: ", e)
         }

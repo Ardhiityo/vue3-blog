@@ -28,7 +28,7 @@ const router = createRouter({
       component: Create
     },
     {
-      path: '/tag/:tag',
+      path: '/tag/:tags',
       name: 'tag',
       component: ShowTags
     },
