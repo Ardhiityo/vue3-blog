@@ -55,19 +55,26 @@
                       </h6>
                     </span>
                   </div>
-                  <button
-                    class="btn btn-danger btn-sm m-0 rounded-1"
-                    @click="delData(), (btn = !btn)"
-                    :disabled="btn"
-                  >
-                    Delete post
-                  </button>
+                  <div class="d-flex gap-2">
+                    <button
+                      class="btn btn-danger btn-sm m-0 rounded-1"
+                      @click="delData(), (btn = !btn)"
+                      :disabled="btn"
+                    >
+                      Delete post
+                    </button>
+                    <RouterLink :to="{ name: 'edit', params: { id } }">
+                    <button
+                      class="btn btn-success btn-sm m-0 rounded-1">
+                      Edit post
+                    </button>
+                  </RouterLink>
+                  </div>
                 </div>
                 <hr class="my-4" />
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </main>
@@ -90,9 +97,11 @@ const errors = ref(null);
 
 const btn = ref(false);
 
+const id = ref(route.params.id);
+
 async function getData() {
   try {
-    const result = await getId(route.params.id);
+    const result = await getId(id.value);
     if (result) {
       post.value = result;
     } else {

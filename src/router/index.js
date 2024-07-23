@@ -8,6 +8,7 @@ import ShowArticle from '../views/ShowArticle.vue'
 import Create from '../views/Create.vue';
 import ShowTags from '../views/ShowTags.vue';
 import PageNotFound from '../views/PageNotFound.vue';
+import Edit from '../views/Edit.vue';
 
 const router = createRouter({
   history: createWebHistory(
@@ -31,6 +32,11 @@ const router = createRouter({
       path: '/tag/:id',
       name: 'tag',
       component: ShowTags
+    },
+    {
+      path: '/edit/:id',
+      name: 'edit',
+      component: Edit
     },
     {
       path: '/:pathMatch(.*)',

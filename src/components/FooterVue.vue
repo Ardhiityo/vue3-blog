@@ -7,11 +7,29 @@
             <li class="list-inline-item">
               <a href="#!">
                 <span class="fa-stack fa-lg">
-                  <font-awesome-icon icon="circle" class="fa-stack-2x" />
-                  <font-awesome-icon
-                    icon="fa-brands fa-twitter"
-                    class="fa-stack-1x fa-inverse"
-                  />
+                  <a href="https://t.me/Neitheriich" target="_blank">
+                    <font-awesome-icon icon="circle" class="fa-stack-2x" />
+                    <font-awesome-icon
+                      icon="fa-brands fa-telegram"
+                      class="fa-stack-1x fa-inverse"
+                    />
+                  </a>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#!">
+                <span class="fa-stack fa-lg">
+                  <a
+                    href="https://www.linkedin.com/in/ardhiityo?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    target="_blank"
+                  >
+                    <font-awesome-icon icon="circle" class="fa-stack-2x" />
+                    <font-awesome-icon
+                      icon="fa-brands fa-linkedin"
+                      class="fa-stack-1x fa-inverse"
+                    />
+                  </a>
                 </span>
               </a>
             </li>
@@ -19,27 +37,21 @@
               <a href="#!">
                 <span class="fa-stack fa-lg">
                   <font-awesome-icon icon="circle" class="fa-stack-2x" />
-                  <font-awesome-icon
-                    icon="fa-brands fa-facebook"
-                    class="fa-stack-1x fa-inverse"
-                  />
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#!">
-                <span class="fa-stack fa-lg">
-                  <font-awesome-icon icon="circle" class="fa-stack-2x" />
-                  <font-awesome-icon
-                    icon="fa-brands fa-github"
-                    class="fa-stack-1x fa-inverse"
-                  />
+                  <a
+                    href="https://www.instagram.com/ardhiityo?igsh=czN6eXRsd3F2NzBw"
+                    target="_blank"
+                  >
+                    <font-awesome-icon
+                      icon="fa-brands fa-square-instagram"
+                      class="fa-stack-1x fa-inverse"
+                    />
+                  </a>
                 </span>
               </a>
             </li>
           </ul>
           <div class="small text-center text-muted fst-italic">
-            Copyright &copy; Your Website 2023
+            Arya Adhi Prasetyo<sup>&copy;</sup>
           </div>
         </div>
       </div>

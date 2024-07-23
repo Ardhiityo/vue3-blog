@@ -1,8 +1,4 @@
 import {
-    ref
-} from "vue";
-
-import {
     useRouter
 } from "vue-router";
 
@@ -15,32 +11,22 @@ import {
     addDoc
 } from "firebase/firestore";
 
-function post() {
+import {
+    defineStore
+} from 'pinia'
+
+
+export const post = defineStore('createPost', () => {
 
     const router = useRouter();
 
-    const tag = ref();
-    const tags = ref([]);
-
-    function addTag(tagFromVue) {
-        if (tagFromVue) {
-            tag.value = tagFromVue;
-            tag.value = tag.value.toLowerCase().replace(/\s+/g, "");
-            if (!tags.value.includes(tag.value)) {
-                tags.value.push(tag.value);
-            }
-            tag.value = "";
-        } else return;
-    }
-
-    async function createPost(title, body, tag) {
-        addTag(tag);
+    async function createPost(titleForm, bodyForm, tagsForm) {
         const posts = {
-            title: title,
-            body: body,
-            tags: tags.value,
+            title: titleForm,
+            body: bodyForm,
+            tags: tagsForm,
         };
-
+        console.log(posts);
         try {
             await addDoc(collection(db, "posts"), posts);
         } catch (e) {
@@ -53,11 +39,6 @@ function post() {
     }
 
     return {
-        tags,
-        addTag,
         createPost
     }
-
-}
-
-export default post;
+});
