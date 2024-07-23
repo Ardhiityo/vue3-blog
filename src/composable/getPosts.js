@@ -24,10 +24,6 @@ export const getPosts = defineStore('posts', () => {
             const data = ref([]);
             const snapshot = await getDocs(collection(db, "posts"));
             snapshot.forEach((p) => {
-                // posts.value.push({
-                //     id: p.id,
-                //     ...p.data(),
-                // });
                 data.value.push({
                     id: p.id,
                     ...p.data(),

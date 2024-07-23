@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mb-3">
     <div class="d-flex justify-content-center align-items-center">
       <div class="spin"></div>
     </div>

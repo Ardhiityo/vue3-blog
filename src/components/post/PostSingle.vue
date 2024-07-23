@@ -7,13 +7,13 @@
       <h3 class="post-subtitle">{{ post.body }}</h3>
     </RouterLink>
 
-      <span class="post-meta mx-1" v-for="tag in post.tags" :key="tag">
-        <RouterLink :to="{name: 'tag', params: { tags : tag }}">
-          #{{ tag }}
-        </RouterLink>
-      </span>
+    <span class="post-meta mx-1" v-for="(tag, index) in post.tags" :key="index">
+      <RouterLink :to="{ name: 'tag', params: { id: tag } }">
+        #{{ tag }}
+      </RouterLink>
+    </span>
   </div>
-  <hr class="my-4" />
+  <hr class="my-4"/>
 </template>
 
 <script setup>

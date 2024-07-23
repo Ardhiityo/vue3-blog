@@ -49,27 +49,25 @@
                       :key="tag"
                     >
                       <h6>
-                        <RouterLink
-                          :to="{ name: 'tag', params: { tags: tag } }"
-                        >
+                        <RouterLink :to="{ name: 'tag', params: { id: tag } }">
                           #{{ tag }}
                         </RouterLink>
                       </h6>
-                      <button
-                        class="btn btn-danger btn-sm m-0"
-                        @click="delData(), btn = !btn"
-                        :disabled="btn"
-                      >
-                        Delete post
-                      </button>
                     </span>
                   </div>
+                  <button
+                    class="btn btn-danger btn-sm m-0 rounded-1"
+                    @click="delData(), (btn = !btn)"
+                    :disabled="btn"
+                  >
+                    Delete post
+                  </button>
                 </div>
+                <hr class="my-4" />
               </div>
             </div>
           </div>
 
-          <hr class="my-4" />
         </div>
       </div>
     </main>

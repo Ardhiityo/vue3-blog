@@ -9,7 +9,12 @@
             </div>
             <div v-else>
               <div class="site-heading">
-                <h1>#{{ tags }}</h1>
+                <div v-if="error">
+                  <h1>{{ error }}</h1>
+                </div>
+                <div v-else>
+                  <h1>#{{ id }}</h1>
+                </div>
               </div>
             </div>
           </div>
@@ -22,10 +27,7 @@
     </div>
 
     <div v-else>
-      <div v-if="err">{{ err }}</div>
-      <div v-else>
-        <PostList :posts="posts" />
-      </div>
+      <PostList :posts="posts" />
     </div>
   </div>
 </template>
@@ -46,11 +48,19 @@ const route = useRoute();
 const posts = ref();
 const loading = ref(true);
 
-const tags = route.params.tags;
+const id = route.params.id;
+
+const error = ref(null);
+error.value = err;
 
 function getTag() {
   load().then((result) => {
-    posts.value = result.filter((p) => p.tags.includes(tags));
+    const search = result.filter((p) => p.tags.includes(id));
+    if (search.length) {
+      posts.value = search;
+    } else {
+      error.value = "Ups, tags not found";
+    }
     loading.value = false;
   });
 }

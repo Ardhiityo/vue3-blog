@@ -59,7 +59,7 @@
                     ></textarea>
                     <label for="tag">Tag</label>
                     <span v-for="tag in tags" :key="tag" class="post-meta mx-1">
-                      {{ tag }}
+                      #{{ tag }}
                     </span>
                   </div>
                   <br />
@@ -93,7 +93,10 @@ import Loading from "@/components/Loading.vue";
 const btn = ref(false);
 
 function status() {
-  addTag(tag.value);
-  tag.value = "";
+  if (!tag.value) return;
+  else {
+    addTag(tag.value);
+    return (tag.value = "");
+  }
 }
 </script>

@@ -18,7 +18,18 @@
     </div>
 
     <div v-else>
-      <div v-if="error">{{ error }}</div>
+      <div v-if="error">
+        <div class="container px-4 px-lg-5">
+          <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+              <div class="post-preview text-center">
+                <h3 class="post-subtitle">{{ error }}</h3>
+              </div>
+              <hr class="my-4" />
+            </div>
+          </div>
+        </div>
+      </div>
       <div v-else>
         <PostList :posts="posts" />
       </div>
@@ -40,7 +51,11 @@ const error = ref(null);
 function getData() {
   load()
     .then((res) => {
-      posts.value = res;
+      if (res.length) {
+        posts.value = res;
+      } else {
+        throw new Error("Ups, data not found");
+      }
     })
     .catch(() => (error.value = "Ups, Data not found" || err))
     .finally(() => (loading.value = false));

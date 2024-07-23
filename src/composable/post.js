@@ -23,12 +23,14 @@ function post() {
     const tags = ref([]);
 
     function addTag(tagFromVue) {
-        tag.value = tagFromVue;
-        tag.value = tag.value.toLowerCase().replace(/\s+/g, "");
-        if (!tags.value.includes(tag.value)) {
-            tags.value.push(tag.value);
-        }
-        tag.value = "";
+        if (tagFromVue) {
+            tag.value = tagFromVue;
+            tag.value = tag.value.toLowerCase().replace(/\s+/g, "");
+            if (!tags.value.includes(tag.value)) {
+                tags.value.push(tag.value);
+            }
+            tag.value = "";
+        } else return;
     }
 
     async function createPost(title, body, tag) {
