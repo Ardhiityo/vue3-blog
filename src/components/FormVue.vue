@@ -86,26 +86,31 @@ function conditionTag() {
 
 function createPost() {
   if (route.params.id) {
-    //
     if (tagForm.value) {
       conditionTag();
       emit("editPost", titleForm.value, bodyForm.value, tagsForm.value);
       return (btn.value = !btn.value);
     } else {
-      emit("editPost", titleForm.value, bodyForm.value, tagsForm.value);
-      return (btn.value = !btn.value);
+      if (tagsForm.value.length < 1) {
+        alert("Please add at least one tag");
+        return (btn.value = !btn.value);
+      } else {
+        emit("editPost", titleForm.value, bodyForm.value, tagsForm.value);
+        return (btn.value = !btn.value);
+      }
     }
-    //
   } else {
     if (tagForm.value) {
       conditionTag();
       emit("createPost", titleForm.value, bodyForm.value, tagsForm.value);
-      return (btn.valuelue = !btn.value);
+      return (btn.value = !btn.value);
     } else {
       if (tagsForm.value.length < 1) {
         alert("Please add at least one tag");
+        return (btn.value = !btn.value);
       } else {
         emit("createPost", titleForm.value, bodyForm.value, tagsForm.value);
+        return (btn.value = !btn.value);
       }
     }
   }

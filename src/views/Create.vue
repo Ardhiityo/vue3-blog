@@ -32,11 +32,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-const btn = ref(false);
+import { ref, onMounted } from "vue";
 import { post } from "@/composable/post.js";
 const { createPost } = post();
 import FormVue from "@/components/FormVue.vue";
+import Loading from "@/components/Loading.vue";
+
+const btn = ref(false);
 
 function sendPost(titleForm, bodyForm, tagsForm) {
   createPost(titleForm, bodyForm, tagsForm);
