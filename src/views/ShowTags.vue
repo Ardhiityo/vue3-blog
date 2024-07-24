@@ -22,12 +22,18 @@
       </div>
     </header>
 
-    <div v-if="loading">
-      <Loading />
-    </div>
+    <div class="container position-relative px-4 pb-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div v-if="loading">
+            <Loading />
+          </div>
 
-    <div v-else>
-      <PostList :posts="posts" />
+          <div v-else>
+            <PostList :posts="posts" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
