@@ -7,10 +7,13 @@
             <li class="list-inline-item">
               <a href="#!">
                 <span class="fa-stack fa-lg">
-                  <a href="https://t.me/Neitheriich" target="_blank">
+                  <a
+                    href="https://www.linkedin.com/in/ardhiityo?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    target="_blank"
+                  >
                     <font-awesome-icon icon="circle" class="fa-stack-2x" />
                     <font-awesome-icon
-                      icon="fa-brands fa-telegram"
+                      icon="fa-brands fa-linkedin"
                       class="fa-stack-1x fa-inverse"
                     />
                   </a>
@@ -20,13 +23,10 @@
             <li class="list-inline-item">
               <a href="#!">
                 <span class="fa-stack fa-lg">
-                  <a
-                    href="https://www.linkedin.com/in/ardhiityo?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                    target="_blank"
-                  >
+                  <a href="https://t.me/Neitheriich" target="_blank">
                     <font-awesome-icon icon="circle" class="fa-stack-2x" />
                     <font-awesome-icon
-                      icon="fa-brands fa-linkedin"
+                      icon="fa-brands fa-telegram"
                       class="fa-stack-1x fa-inverse"
                     />
                   </a>
