@@ -76,10 +76,10 @@ function getData() {
       if (res.length) {
         posts.value = res;
       } else {
-        throw new Error("Ups, data not found");
+        throw new Error("Let's add data now");
       }
     })
-    .catch(() => (error.value = "Ups, Data not found" || err))
+    .catch((e) => (error.value = e.message || err))
     .finally(() => (loading.value = false));
 }
 getData();

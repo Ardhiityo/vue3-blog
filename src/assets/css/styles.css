@@ -10663,8 +10663,7 @@ blockquote {
 }
 
 footer {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding : 10px;
 }
 
 header.masthead {

@@ -26,7 +26,6 @@ export const post = defineStore('createPost', () => {
             body: bodyForm,
             tags: tagsForm,
         };
-        console.log(posts);
         try {
             await addDoc(collection(db, "posts"), posts);
         } catch (e) {
