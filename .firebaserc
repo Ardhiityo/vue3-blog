@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "vue-blog-33fef"
+  },
+  "targets": {
+    "vue-blog-33fef": {
+      "hosting": {
+        "project-vue3-blog": [
+          "vue-blog-33fef"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
