@@ -1,5 +1,5 @@
 <template>
-  <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+  <header class="masthead" style="background-image: url('/img/show-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
@@ -43,7 +43,7 @@
                 <h3 class="post-subtitle display-6">{{ post.body }}</h3>
                 <div class="d-flex flex-wrap gap-2">
                   <span
-                    class="post-meta mx-1"
+                    class="post-meta my-3 mx-1"
                     v-for="tag in post.tags"
                     :key="tag"
                   >

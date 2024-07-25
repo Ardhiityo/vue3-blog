@@ -5,8 +5,8 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="site-heading">
-              <h1>Clean Blog</h1>
-              <span class="subheading">A Simple Blog Made With Love</span>
+              <h1>Creativity without Limits</h1>
+              <span class="subheading">pour your creativity...</span>
             </div>
           </div>
         </div>
@@ -24,6 +24,12 @@
             <div v-if="error">
               <div class="post-preview text-center">
                 <h3 class="post-subtitle">{{ error }}</h3>
+                <RouterLink
+                  to="/article/create"
+                  class="btn btn-sm text-light"
+                  style="background-color: #0085a1"
+                  >Add post</RouterLink
+                >
               </div>
               <hr class="my-4" />
             </div>
@@ -61,6 +67,7 @@ const loading = ref(true);
 const { err, load } = getPosts();
 
 const posts = ref([]);
+
 const error = ref(null);
 const search = ref("");
 
@@ -75,6 +82,9 @@ function getData() {
     .then((res) => {
       if (res.length) {
         posts.value = res;
+        posts.value.map((p) => {
+          return (p.body = p.body.substring(0, 70) + "....");
+        });
       } else {
         throw new Error("Let's add post now...");
       }
