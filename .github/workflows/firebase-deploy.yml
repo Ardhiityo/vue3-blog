@@ -21,14 +21,23 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: List installed packages
+        run: npm list
+
+      - name: List installed binaries
+        run: ls -la node_modules/.bin
+
       - name: Verify Vite installation
-        run: npx vite --version  # Memastikan Vite diinstal
+        run: npx vite --version
+
+      - name: Check Node.js version
+        run: node --version
+
+      - name: Check npm version
+        run: npm --version
 
       - name: Build project
-        run: npx vite build  # Menjalankan build menggunakan npx
-
-      - name: List installed packages
-        run: npm list  # Memeriksa apakah semua paket terinstal
+        run: npx vite build
 
       - name: Deploy to Firebase Hosting
         env:
