@@ -1,45 +1,25 @@
 name: Deploy to Firebase Hosting
-
 on:
   push:
     branches:
-      - main  # Atau branch lain yang ingin Anda gunakan untuk deploy
-
+      - main  # Sesuaikan dengan branch kakak
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v2
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
-          node-version: '20'  # Versi Node.js yang sesuai
-
+          node-version: '20'  # Sesuaikan dengan Node.js proyek kakak ya
       - name: Install dependencies
         run: npm install
-
-      - name: List installed packages
-        run: npm list
-
-      - name: List installed binaries
-        run: ls -la node_modules/.bin
-
-      - name: Verify Vite installation
-        run: npx vite --version
-
-      - name: Check Node.js version
-        run: node --version
-
-      - name: Check npm version
-        run: npm --version
-
       - name: Build project
-        run: npx vite build
-
-      - name: Deploy to Firebase Hosting
+        run: npm run build  # Sesuaikan dengan perintah build proyek kakak juga
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@v1
+        with:
+          args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: npx firebase deploy --only hosting
