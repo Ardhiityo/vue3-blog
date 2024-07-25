@@ -76,7 +76,7 @@ function getData() {
       if (res.length) {
         posts.value = res;
       } else {
-        throw new Error("Let's add post now");
+        throw new Error("Let's add post now...");
       }
     })
     .catch((e) => (error.value = e.message || err))
