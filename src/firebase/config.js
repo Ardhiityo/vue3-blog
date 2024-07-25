@@ -7,7 +7,7 @@ const firebaseConfig = {
   projectId: "vue-blog-33fef",
   storageBucket: "vue-blog-33fef.appspot.com",
   messagingSenderId: "350425688723",
-  appId: "1:350425688723:web:26a6a63eab868e13343b66"
+  appId: "1:350425688723:web:7a816656c21d62a4343b66"
 };
 
 // Initialize Firebase
