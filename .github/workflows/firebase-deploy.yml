@@ -11,20 +11,26 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Gunakan versi terbaru
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Gunakan versi terbaru
+        uses: actions/setup-node@v3
         with:
           node-version: '20'  # Pastikan menggunakan versi Node.js yang sesuai
 
       - name: Install dependencies
         run: npm install
 
+      - name: Verify Vite installation
+        run: npx vite --version  # Pastikan Vite diinstal dan dapat diakses
+
       - name: Build project
         run: npm run build
+
+      - name: List installed packages
+        run: npm list  # Memeriksa apakah semua paket yang diperlukan diinstal
 
       - name: Deploy to Firebase Hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: npm run firebase
+        run: npx firebase deploy --only hosting
